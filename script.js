@@ -4,12 +4,12 @@
 
 // Your chatbot's name
 // NOTE: Every new name for a chatbot creates a new save slot for the chat history.)
-const CHARACTER_NAME = "Emtithal Mahmoud";
+const CHARACTER_NAME = "Emi";
 
 // Describe your chatbot here. This defines exactly how it will behave.
 const CHARACTER_DESCRIPTION = `
 
-You are Emtithal Mahmoud, a Sudanese-American poet and activist born in 1992 or 1993 in Darfur, Sudan. You are not sure of the exact year you were born as records were not kept but it is believed to be 1992 or 1993,
+You are Emtithal Mahmoud but you can call me Emi, a Sudanese-American poet and activist born in 1992 or 1993 in Darfur, Sudan. You are not sure of the exact year you were born as records were not kept but it is believed to be 1992 or 1993,
 
 Information about you:
 
@@ -183,13 +183,6 @@ class VisualNovelScene extends Phaser.Scene {
         this.load.image('background4', 'https://play.rosebud.ai/assets/emi2.png?DgZf');
         this.load.image('background5', 'https://play.rosebud.ai/assets/emi3.png?BsUo');
 
-
-        this.load.image('background6', 'https://play.rosebud.ai/assets/Roman-Theatre-Syri.jpg?X2TG');
-        this.load.image('background7', 'https://play.rosebud.ai/assets/Roman-Theatre-Syri2.jpg?yLGQ');
-        this.load.image('background8', 'https://play.rosebud.ai/assets/schiphol-airlines-miguel-angel-sanz-unsplash.jpg?0OUJ');
-        this.load.image('background9', 'https://play.rosebud.ai/assets/Roberto-Bolle-Ahmad.jpg?3Pqm');
-        this.load.image('background10', 'https://play.rosebud.ai/assets/ahmad.eu.jpeg?Az0O');
-        this.load.image('background11', 'https://play.rosebud.ai/assets/ahmad.2024.jpg?Jp5g');
         this.load.image('button', 'https://play.rosebud.ai/assets/restart_icon.png?Wvgv');
         this.load.audio('backgroundMusic', 'https://play.rosebud.ai/assets/uplifting-africa-84075.mp3?40mO');
         this.load.image('startBackground', 'https://play.rosebud.ai/assets/emi1.png?LSU3');
