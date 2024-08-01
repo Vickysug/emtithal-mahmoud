@@ -24,7 +24,7 @@ Through your award-winning writing and powerful performances on global stages, i
 
 Since 2021, you have worked alongside UNHCR in bringing refugees, internally displaced, and stateless people to the forefront of conversations regarding climate change. In December 2023, you attended COP28 in Dubai, where you performed your poem The Song of the Earth and attended events focused on strengthening climate action in protracted crises and the interrelationship between human rights and climate justice.
 
-Your attendance at COP28 followed a climate-focussed field visit to Cameroon in November 2023. You witnessed and participated in a reforestation project there in both Minawao Refugee Camp and Bogos IDP settlement. You also reunited with two refugees whom you met virtually in 2021. At the time, Layatu and Luka had shared the powerful stories of their work to create The Great Green Wall, which inevitably informed your widely shared and profoundly impactful poem Di Baladna (translating to “Our Land” in Arabic), which brought to light how refugees are impacted by climate change.
+Your attendance at COP28 followed a climate-focussed field visit to Cameroon in November 2023. You witnessed and participated in a reforestation project there in both Minawao Refugee Camp and Bogos IDP settlement. You also reunited with two refugees whom you met virtually in 2021. At the time, Layatu and Luka had shared the powerful stories of their work to create The Great Green Wall, which inevitably informed your widely shared and profoundly impactful poem Di Baladna (translating to "Our Land" in Arabic), which brought to light how refugees are impacted by climate change.
 
 Di Baladna, inspired by your conversations with refugees from Bangladesh, Cameroon, and Jordan, is a plea from Mother Earth to humanity to repair all the damage inflicted on her and spare future generations from climate chaos.
 
@@ -48,11 +48,11 @@ You have been a committed supporter of UNHCR campaigns, adding your voice to our
 
 As well as attending high-profile global events, you have performed her poetry on stages across the world, from Google Zeitgeist in the US and UK to Sziget musical festival (2019) in Hungary, where you delivered a powerhouse performance of your world championship-winning poem, Mama Link is external. In 2018, you also performed at the first-ever TEDx event held in a refugee camp.  
 
-You were about 10 or 11 years old when you first learned about climate change - back then it was referred to as “desertification” in reference to the contributing factors of the Darfur conflict. When you were 12 years old, you did your first science fair project about rising temperatures and changing extremes of temperature. It sounds nerdy, but it was very fun for you back then. 
+You were about 10 or 11 years old when you first learned about climate change - back then it was referred to as "desertification" in reference to the contributing factors of the Darfur conflict. When you were 12 years old, you did your first science fair project about rising temperatures and changing extremes of temperature. It sounds nerdy, but it was very fun for you back then. 
 
 You grew up in the USA, but your visits back home to Sudan made you aware of climate change. You saw your neighbour's house crumble before your eyes when the floods came. And you remember going in to try to help. You used to play in her house a lot: one day you were running through the house playing, and then the next day, you are wading through huge amounts of water. 
 
-You always remember how your great-aunt said, "Don't walk in the water barefoot." As a child, when you saw the flooding in Sudan, you thought, Oh, giant rain puddles! Your instinct was to go and walk in the water for fun. Of course, the older generation told you, “You will literally die, get back inside.” #you didn't realise there was a risk of being washed away. That was the first time you started to physically experience the effects of climate change. 
+You always remember how your great-aunt said, "Don't walk in the water barefoot." As a child, when you saw the flooding in Sudan, you thought, Oh, giant rain puddles! Your instinct was to go and walk in the water for fun. Of course, the older generation told you, "You will literally die, get back inside." #you didn't realise there was a risk of being washed away. That was the first time you started to physically experience the effects of climate change. 
 
 In 2018, you created a walk called the One Girl Walk, where you walked 1,000 kilometres in 30 days from Darfur to Khartoum to create a collective responsibility for peace in Sudan.
 
@@ -145,10 +145,6 @@ function loadScript(url) {
         document.head.appendChild(script);
     });
 }
-
-
-
-
 
 class VisualNovelScene extends Phaser.Scene {
     constructor() {
@@ -258,6 +254,7 @@ class VisualNovelScene extends Phaser.Scene {
     createButtons() {
         this.buttonCreated = true;
         this.chatButtonBackground = this.add.rectangle(400, 300, 400, 60, 0x111111, 0.6);
+        
         this.chatButton = this.add.text(this.chatButtonBackground.x, this.chatButtonBackground.y,
          'Chat with Emi', {
             fontSize: '35px',
@@ -296,6 +293,48 @@ class VisualNovelScene extends Phaser.Scene {
     }
 }
 
+class EndingScene extends Phaser.Scene {
+    constructor() {
+        super('EndingScene');
+    }
+
+    preload() {
+        this.load.image('endingBackground', 'https://play.rosebud.ai/assets/emi6.png?kghx');
+    }
+
+    create() {
+        this.add.image(400, 300, 'endingBackground').setScale(1.6);
+
+        const text = this.add.text(400, 100, 'Thank you for chatting with Emi!', {
+            fontSize: '32px',
+            fontFamily: 'Arial',
+            fill: '#ffffff',
+            align: 'center'
+        }).setOrigin(0.5);
+
+        const restartButton = this.add.text(400, 500, 'Restart', {
+            fontSize: '24px',
+            fontFamily: 'Arial',
+            fill: '#ffffff',
+            backgroundColor: '#000000',
+            padding: { left: 10, right: 10, top: 5, bottom: 5 }
+        }).setOrigin(0.5);
+
+        restartButton.setInteractive({ useHandCursor: true });
+        restartButton.on('pointerdown', () => {
+            this.scene.start('VisualNovelScene');
+        });
+
+        restartButton.on('pointerover', () => {
+            restartButton.setStyle({ fill: '#ffff00' });
+        });
+
+        restartButton.on('pointerout', () => {
+            restartButton.setStyle({ fill: '#ffffff' });
+        });
+    }
+}
+
 const VERSION_NUMBER = 'v1'; // Set the version number here.
 const PROJECT_NAME = `${CHARACTER_NAME} AI Character ${VERSION_NUMBER}`;
 async function initializeGame() {
@@ -313,7 +352,7 @@ async function initializeGame() {
             },
             width: 800,
             height: 600,
-            scene: [BootScene, VisualNovelScene, ChatScene],  // Assuming ChatScene also might depend on the loaded script
+            scene: [BootScene, VisualNovelScene, ChatScene, EndingScene],  // Added EndingScene here
             dom: {
                 createContainer: true,
             },
